@@ -37,17 +37,30 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"default" ofType:@"jpg"];
-        _img = [[UIImage alloc] initWithContentsOfFile:imgPath];
-        _title = title;
-        _description = description;
-        _location = location;
-        _date = date;
+//        NSString *imgPath = [[NSBundle mainBundle] pathForResource:@"default" ofType:@"jpg"];
+//        _img = [[UIImage alloc] initWithContentsOfFile:imgPath];
+//        _title = title;
+//        _description = description;
+//        _location = location;
+//        _date = date;
         
         [self setOpaque:NO];
         
     }
     return self;
+}
+
+-(void) uTitle: (NSString *) title {
+    _title = title;
+}
+-(void) uDescription: (NSString *) description {
+    _description = description;
+}
+-(void) uLocation: (NSString *) location {
+    _location = location;
+}
+-(void) uDate: (NSString *) date {
+    _date = date;
 }
 
 
@@ -58,7 +71,6 @@
     UIRectFill(rect);
     
     const CGFloat p = 10; //padding
-    const CGFloat tp = 5; //textPadding
 
     const CGFloat shadowOffset = 0.5;
     const CGFloat shadowBlur = 4;
@@ -84,7 +96,7 @@
 
     CGRect imgFrame = CGRectMake(p+frame.origin.x, p+frame.origin.y,
                                  frame.size.width-2*p, frame.size.height*0.75-2*p);
-    [_img drawInRect: imgFrame];
+//    [_img drawInRect: imgFrame];
     
     CGRect detailFrame = CGRectMake(imgFrame.origin.x, imgFrame.origin.y + imgFrame.size.height, imgFrame.size.width, frame.size.height*0.25-p);
     CGContextSetRGBFillColor(context, 0.9, 0.9, 0.9, 1.0);
@@ -101,20 +113,23 @@
     CGContextStrokePath(context);
 
     //detail frames
-    CGRect titleRect = CGRectMake(detailFrame.origin.x+tp, detailFrame.origin.y+tp, detailFrame.size.width/2-2*tp, detailFrame.size.height/2-2*tp);
-    CGRect descriptionRect = CGRectMake(titleRect.origin.x, titleRect.origin.y + titleRect.size.height + tp, titleRect.size.width, titleRect.size.height);
-    CGRect locationRect = CGRectMake(titleRect.origin.x + titleRect.size.width + tp, detailFrame.origin.y+tp, titleRect.size.width, titleRect.size.height);
-    CGRect dateRect = CGRectMake(titleRect.origin.x + titleRect.size.width + tp, titleRect.origin.y + titleRect.size.height + tp, titleRect.size.width, titleRect.size.height);
-    
-    UIFont *font = [UIFont systemFontOfSize:20];
-    NSDictionary *titleA = @{ NSFontAttributeName: font
-                                  };
-    
-    //draw detail
-    [_title drawInRect:titleRect withAttributes:titleA];
-    [_description drawInRect:descriptionRect withAttributes:nil];
-    [_location drawInRect:locationRect withAttributes:nil];
-    [_date drawInRect:dateRect withAttributes:nil];
+//    CGRect titleRect = CGRectMake(detailFrame.origin.x+tp, detailFrame.origin.y+tp, detailFrame.size.width/2-2*tp, detailFrame.size.height/2-2*tp);
+//    CGRect descriptionRect = CGRectMake(titleRect.origin.x, titleRect.origin.y + titleRect.size.height + tp, titleRect.size.width, titleRect.size.height);
+//    CGRect locationRect = CGRectMake(titleRect.origin.x + titleRect.size.width + tp, detailFrame.origin.y+tp, titleRect.size.width, titleRect.size.height);
+//    CGRect dateRect = CGRectMake(titleRect.origin.x + titleRect.size.width + tp, titleRect.origin.y + titleRect.size.height + tp, titleRect.size.width, titleRect.size.height);
+//
+//    UIFont *font = [UIFont systemFontOfSize:20];
+//    NSDictionary *titleA = @{ NSFontAttributeName: font
+//                                  };
+//    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+//    [style setAlignment:NSTextAlignmentRight];
+//    NSDictionary *rightAttr = [NSDictionary dictionaryWithObject:style forKey:NSParagraphStyleAttributeName];
+//
+//    //draw detail
+//    [_title drawInRect:titleRect withAttributes:titleA];
+//    [_description drawInRect:descriptionRect withAttributes:nil];
+//    [_location drawInRect:locationRect withAttributes:rightAttr];
+//    [_date drawInRect:dateRect withAttributes:rightAttr];
 
 
 }

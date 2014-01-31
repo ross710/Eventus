@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		916547BC189C326600DC0CFD /* SharedFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 916547BB189C326600DC0CFD /* SharedFunctions.m */; };
 		91F6E0BF189457C90042C1BB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F6E0BE189457C90042C1BB /* Foundation.framework */; };
 		91F6E0C1189457C90042C1BB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F6E0C0189457C90042C1BB /* CoreGraphics.framework */; };
 		91F6E0C3189457C90042C1BB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F6E0C2189457C90042C1BB /* UIKit.framework */; };
@@ -38,7 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		916547B9189C117500DC0CFD /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		916547BA189C326600DC0CFD /* SharedFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedFunctions.h; sourceTree = "<group>"; };
+		916547BB189C326600DC0CFD /* SharedFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedFunctions.m; sourceTree = "<group>"; };
 		91F6E0BB189457C90042C1BB /* Eventus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91F6E0BE189457C90042C1BB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		91F6E0C0189457C90042C1BB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -133,7 +135,8 @@
 				91F6E0FD18945DA60042C1BB /* EventView.m */,
 				91F6E0F918945BC10042C1BB /* EventCell.h */,
 				91F6E0FA18945BC10042C1BB /* EventCell.m */,
-				916547B9189C117500DC0CFD /* Constants.h */,
+				916547BA189C326600DC0CFD /* SharedFunctions.h */,
+				916547BB189C326600DC0CFD /* SharedFunctions.m */,
 				91F6E0FF18945F460042C1BB /* default.jpg */,
 				91F6E0D9189457C90042C1BB /* Images.xcassets */,
 				91F6E0C5189457C90042C1BB /* Supporting Files */,
@@ -268,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				916547BC189C326600DC0CFD /* SharedFunctions.m in Sources */,
 				91F6E0FB18945BC10042C1BB /* EventCell.m in Sources */,
 				91F6E0FE18945DA60042C1BB /* EventView.m in Sources */,
 				91F6E0CF189457C90042C1BB /* AppDelegate.m in Sources */,

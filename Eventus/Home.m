@@ -9,8 +9,13 @@
 #import "Home.h"
 #import "EventView.h"
 #import "EventCell.h"
+#import "SharedFunctions.h"
+
+#define URL_CONCERTS [NSURL URLWithString:@"http://ws.audioscrobbler.com/2.0/?method=geo.getevents&location=boston&api_key=32e7c43bdb5fa7ddb7c79a357a391ec9&format=json"]
 
 @interface Home ()
+@property (nonatomic) NSMutableArray *concerts;
+//@property (nonatomic) NSMutableArray *images;
 
 @end
 
@@ -21,6 +26,9 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        _concerts = [[NSMutableArray alloc]init];
+//        _images = [[NSMutableArray alloc]init];
+
     }
     return self;
 }
@@ -30,12 +38,73 @@
     [super viewDidLoad];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     [self.tableView setBackgroundColor:[UIColor lightGrayColor]];
+    
+    
+    [self queueConcerts];
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+-(void) queueConcerts {
+    NSURLRequest* request = [NSURLRequest requestWithURL:URL_CONCERTS cachePolicy:0 timeoutInterval:5];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[[NSOperationQueue alloc] init]
+                           completionHandler:^(NSURLResponse *response,NSData *data, NSError *error)
+     {
+         if ([data length] >0 && error == nil)
+         {
+             [self performSelectorOnMainThread:@selector(receiveConcerts:) withObject:data waitUntilDone:YES];
+         }
+         else if ([data length] == 0 && error == nil)
+         {
+             NSLog(@"Nothing was downloaded.");
+         }
+         else if (error != nil){
+             NSLog(@"Error = %@", error);
+         }
+         
+     }];
+}
+-(void) receiveConcerts: (NSData*) data {
+    NSError *e = nil;
+    NSDictionary *dict = [NSJSONSerialization JSONObjectWithData: data options: NSJSONReadingMutableContainers error: &e];
+    NSArray *events = [[dict objectForKey:@"events"] objectForKey:@"event"];
+//    NSLog(@"Json array %@", events);
+    
+    NSMutableArray *list = [[NSMutableArray alloc] init];
+    for (NSDictionary *event in events) {
+//        NSLog(@"TITLE: %@", [event objectForKey:@"title"]);
+        NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+        [dict setObject:[event objectForKey:@"title"] forKey:@"title"];
+        [dict setObject:[event objectForKey:@"description"] forKey:@"description"];
+        [dict setObject:[event objectForKey:@"venue"] forKey:@"location"];
+        [dict setObject:[event objectForKey:@"startDate"] forKey:@"date"];
+        
+        NSArray *imgs = [event objectForKey:@"image"];
+        NSDictionary *imgDict = [imgs objectAtIndex:3];
+        NSString *imgURL = [imgDict objectForKey:@"#text"];
+        NSURL * imageURL = [NSURL URLWithString:imgURL];
+        NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
+        UIImage * image = [UIImage imageWithData:imageData];
+        
+        if (image) {
+            [dict setObject:image forKey:@"img"];
+        }
+        
+        [list addObject:dict];
+
+    }
+    [self updateConcerts:list];
+    
+}
+
+-(void) updateConcerts: (NSMutableArray *) concerts {
+    self.concerts = concerts;
+    [self.tableView reloadData];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -57,9 +126,12 @@
 {
 #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 6;
+    return [_concerts count];
 }
 
+-(NSString *) parseDate: (NSString *) str {
+    return nil;
+}
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
@@ -69,11 +141,27 @@
     if (cell == nil) {
         cell =  [[EventCell alloc] initWithData:UITableViewCellStyleDefault
                                 reuseIdentifier:CellIdentifier
-                                     EventTitle:@"Test title here"
+                                     EventTitle:[self.concerts objectAtIndex:indexPath.row]
                                     EventDescription:@"This is a test description"
                                   EventLocation:@"Downtown Boston, MA"
-                                      EventDate:@"Thursday 2nd February"];
+                                      EventDate:@"10/2"];
+//        NSDictionary *dict = [self.concerts objectAtIndex:indexPath.row];
+//
+//        NSURL * imageURL = [NSURL URLWithString:[dict objectForKey:@"imgURL"]];
+//        NSData * imageData = [NSData dataWithContentsOfURL:imageURL];
+//        UIImage * image = [UIImage imageWithData:imageData];
+//        
     }
+    NSDictionary *dict = [self.concerts objectAtIndex:indexPath.row];
+    cell.title.text = [dict objectForKey:@"title"];
+    cell.description.text = [dict objectForKey:@"description"];
+    cell.date.text = [dict objectForKey:@"date"];
+    
+    [cell.img setImage:[dict objectForKey:@"img"]];
+
+
+//    [cell update];
+//    NSLog(@"%@ concert", [self.concerts objectAtIndex:indexPath.row]);
 //    [cell addSubview:[[EventView alloc] init]];
     // Configure the cell...
 //    [cell setBackgroundColor:[UIColor blackColor]];
@@ -84,7 +172,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //hard code width
-    return 320.0;
+    return WIDTH;
 }
 /*
 // Override to support conditional editing of the table view.
