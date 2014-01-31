@@ -15,13 +15,16 @@
 		91F6E0CF189457C90042C1BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F6E0CE189457C90042C1BB /* AppDelegate.m */; };
 		91F6E0D2189457C90042C1BB /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91F6E0D0189457C90042C1BB /* Main_iPhone.storyboard */; };
 		91F6E0D5189457C90042C1BB /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 91F6E0D3189457C90042C1BB /* Main_iPad.storyboard */; };
-		91F6E0D8189457C90042C1BB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F6E0D7189457C90042C1BB /* ViewController.m */; };
 		91F6E0DA189457C90042C1BB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 91F6E0D9189457C90042C1BB /* Images.xcassets */; };
 		91F6E0E1189457C90042C1BB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F6E0E0189457C90042C1BB /* XCTest.framework */; };
 		91F6E0E2189457C90042C1BB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F6E0BE189457C90042C1BB /* Foundation.framework */; };
 		91F6E0E3189457C90042C1BB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91F6E0C2189457C90042C1BB /* UIKit.framework */; };
 		91F6E0EB189457C90042C1BB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 91F6E0E9189457C90042C1BB /* InfoPlist.strings */; };
 		91F6E0ED189457C90042C1BB /* EventusTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F6E0EC189457C90042C1BB /* EventusTests.m */; };
+		91F6E0F818945B180042C1BB /* Home.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F6E0F718945B180042C1BB /* Home.m */; };
+		91F6E0FB18945BC10042C1BB /* EventCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F6E0FA18945BC10042C1BB /* EventCell.m */; };
+		91F6E0FE18945DA60042C1BB /* EventView.m in Sources */ = {isa = PBXBuildFile; fileRef = 91F6E0FD18945DA60042C1BB /* EventView.m */; };
+		91F6E10018945F460042C1BB /* default.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 91F6E0FF18945F460042C1BB /* default.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		916547B9189C117500DC0CFD /* Constants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		91F6E0BB189457C90042C1BB /* Eventus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		91F6E0BE189457C90042C1BB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		91F6E0C0189457C90042C1BB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -47,14 +51,19 @@
 		91F6E0CE189457C90042C1BB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		91F6E0D1189457C90042C1BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		91F6E0D4189457C90042C1BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		91F6E0D6189457C90042C1BB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		91F6E0D7189457C90042C1BB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		91F6E0D9189457C90042C1BB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		91F6E0DF189457C90042C1BB /* EventusTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EventusTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		91F6E0E0189457C90042C1BB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		91F6E0E8189457C90042C1BB /* EventusTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EventusTests-Info.plist"; sourceTree = "<group>"; };
 		91F6E0EA189457C90042C1BB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		91F6E0EC189457C90042C1BB /* EventusTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EventusTests.m; sourceTree = "<group>"; };
+		91F6E0F618945B180042C1BB /* Home.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Home.h; sourceTree = "<group>"; };
+		91F6E0F718945B180042C1BB /* Home.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Home.m; sourceTree = "<group>"; };
+		91F6E0F918945BC10042C1BB /* EventCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventCell.h; sourceTree = "<group>"; };
+		91F6E0FA18945BC10042C1BB /* EventCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventCell.m; sourceTree = "<group>"; };
+		91F6E0FC18945DA60042C1BB /* EventView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EventView.h; sourceTree = "<group>"; };
+		91F6E0FD18945DA60042C1BB /* EventView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EventView.m; sourceTree = "<group>"; };
+		91F6E0FF18945F460042C1BB /* default.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = default.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,8 +127,14 @@
 				91F6E0CE189457C90042C1BB /* AppDelegate.m */,
 				91F6E0D0189457C90042C1BB /* Main_iPhone.storyboard */,
 				91F6E0D3189457C90042C1BB /* Main_iPad.storyboard */,
-				91F6E0D6189457C90042C1BB /* ViewController.h */,
-				91F6E0D7189457C90042C1BB /* ViewController.m */,
+				91F6E0F618945B180042C1BB /* Home.h */,
+				91F6E0F718945B180042C1BB /* Home.m */,
+				91F6E0FC18945DA60042C1BB /* EventView.h */,
+				91F6E0FD18945DA60042C1BB /* EventView.m */,
+				91F6E0F918945BC10042C1BB /* EventCell.h */,
+				91F6E0FA18945BC10042C1BB /* EventCell.m */,
+				916547B9189C117500DC0CFD /* Constants.h */,
+				91F6E0FF18945F460042C1BB /* default.jpg */,
 				91F6E0D9189457C90042C1BB /* Images.xcassets */,
 				91F6E0C5189457C90042C1BB /* Supporting Files */,
 			);
@@ -234,6 +249,7 @@
 				91F6E0DA189457C90042C1BB /* Images.xcassets in Resources */,
 				91F6E0D2189457C90042C1BB /* Main_iPhone.storyboard in Resources */,
 				91F6E0C9189457C90042C1BB /* InfoPlist.strings in Resources */,
+				91F6E10018945F460042C1BB /* default.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,8 +268,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				91F6E0D8189457C90042C1BB /* ViewController.m in Sources */,
+				91F6E0FB18945BC10042C1BB /* EventCell.m in Sources */,
+				91F6E0FE18945DA60042C1BB /* EventView.m in Sources */,
 				91F6E0CF189457C90042C1BB /* AppDelegate.m in Sources */,
+				91F6E0F818945B180042C1BB /* Home.m in Sources */,
 				91F6E0CB189457C90042C1BB /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -473,6 +491,7 @@
 				91F6E0F2189457C90042C1BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		91F6E0F3189457C90042C1BB /* Build configuration list for PBXNativeTarget "EventusTests" */ = {
 			isa = XCConfigurationList;
@@ -481,6 +500,7 @@
 				91F6E0F5189457C90042C1BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
